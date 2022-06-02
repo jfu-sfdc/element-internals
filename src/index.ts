@@ -49,9 +49,9 @@ class MyButton extends HTMLElement {
       const target = event.target as HTMLButtonElement
 
       if (this.getAttribute('type') === 'submit') {
-        if (this.parentElement instanceof HTMLFormElement) {
-          ;(this.parentElement as HTMLFormElement).submit()
-        }
+        // find the parent form element
+        const form = this.parentElement as HTMLFormElement
+        form.submit()
       }
     })
   }
@@ -62,7 +62,6 @@ customElements.define('my-button', MyButton)
 
 const form: HTMLFormElement = document.querySelector('form')
 
-form.addEventListener('submit', (event: SubmitEvent) => {
-  event.preventDefault()
-  console.log(form.elements)
+form.addEventListener('submit', () => {
+  console.log('submit form')
 })
