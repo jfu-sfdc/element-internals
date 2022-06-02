@@ -1,0 +1,24 @@
+{
+  "name": "element-internals-poc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "build": "rollup --config rollup.config.js",
+    "start": "npx static-server public"
+  },
+  "dependencies": {
+    "element-internals-polyfill": "latest"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-typescript": "^8.3.2",
+    "prettier": "^2.6.2",
+    "rollup": "^2.75.5",
+    "tslib": "^2.4.0",
+    "typescript": "^4.7.2"
+  },
+  "author": "",
+  "license": "ISC"
+}

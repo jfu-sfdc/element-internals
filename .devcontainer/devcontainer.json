@@ -1,0 +1,16 @@
+{
+  "name": "Node & Typescript",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["esbenp.prettier-vscode"],
+      "settings": {
+        "editor.formatOnSave": true
+      }
+    }
+  },
+  "postCreateCommand": "yarn install",
+  "remoteUser": "node"
+}
