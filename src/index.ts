@@ -34,6 +34,9 @@ class MyInput extends HTMLElement {
 }
 
 class MyButton extends HTMLElement {
+  static formAssociated = true
+  internals: ElementInternals = null
+
   constructor() {
     super()
     const root = this.attachShadow({
@@ -45,14 +48,10 @@ class MyButton extends HTMLElement {
     button.textContent = 'Custom Button Submit'
     root.appendChild(button)
 
-    button.addEventListener('click', (event) => {
-      const target = event.target as HTMLButtonElement
+    this.internals = this.attachInternals()
 
-      if (this.getAttribute('type') === 'submit') {
-        // find the parent form element
-        const form = this.parentElement as HTMLFormElement
-        form.submit()
-      }
+    button.addEventListener('click', (event) => {
+      this.internals.form.requestSubmit()
     })
   }
 }
