@@ -42,7 +42,7 @@ class MyButton extends HTMLElement {
 
     const button: HTMLButtonElement = document.createElement('button')
     button.type = 'submit'
-    button.textContent = 'Button Submit'
+    button.textContent = 'Custom Button Submit'
     root.appendChild(button)
 
     button.addEventListener('click', (event) => {
