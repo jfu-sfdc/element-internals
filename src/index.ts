@@ -56,8 +56,43 @@ class MyButton extends HTMLElement {
   }
 }
 
+class MyButton2 extends HTMLElement {
+  static formAssociated = true
+  internals: ElementInternals = null
+
+  constructor() {
+    super()
+    const root = this.attachShadow({
+      mode: 'open',
+    })
+
+    const button: HTMLButtonElement = document.createElement('button')
+    button.type = 'submit'
+    button.textContent = 'Custom Button 2 Submit'
+    root.appendChild(button)
+
+    this.internals = this.attachInternals()
+
+    button.addEventListener('click', (event) => {
+      const form = findParentForm(this)
+      form.requestSubmit()
+    })
+  }
+}
+
+function findParentForm(element: HTMLElement): HTMLFormElement {
+  let el = element.parentElement
+
+  while (el != null && el.tagName.toLowerCase() !== 'form') {
+    el = el.parentElement
+  }
+
+  return el as HTMLFormElement
+}
+
 customElements.define('my-input', MyInput)
 customElements.define('my-button', MyButton)
+customElements.define('my-button2', MyButton2)
 
 const form: HTMLFormElement = document.querySelector('form')
 
